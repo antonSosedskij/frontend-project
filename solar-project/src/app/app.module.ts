@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignInComponent } from './core/auth/pages/modals/sign-in/sign-in.component';
-import { SignUpComponent } from './core/auth/pages/modals/sign-up/sign-up.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HeaderModule } from './shared/components/header/header.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent,
-    SignUpComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HeaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
