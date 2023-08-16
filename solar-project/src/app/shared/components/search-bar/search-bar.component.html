@@ -1,0 +1,8 @@
+<div class="container px-5 py-3 flex align-items-center">
+    <p-menu #menu [model]="items" [popup]="true"></p-menu>
+    <p-button icon="pi pi-bars" (click)="menu.toggle($event)" label="Все категории" styleClass="p-button-outlined" class="container__categories"></p-button>
+    <div class="container__search search flex align-items-center">
+        <input type="text" pInputText class="search__input" type="text" placeholder="Поиск по объявлениям">
+        <p-button icon="pi pi-search" label="Найти" iconPos="right" class="search__button"></p-button>
+    </div>
+</div>
