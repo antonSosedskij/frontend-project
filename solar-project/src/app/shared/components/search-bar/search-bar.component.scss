@@ -1,0 +1,41 @@
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 100px;
+
+    &__categories::ng-deep{
+        .p-button-label{
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .p-button{
+            padding: 8px 12px;
+            margin-right: 12px;
+        }
+    }
+
+}
+
+
+.search{
+    width: 100%;
+
+    &__button::ng-deep{
+        .p-button-label{
+            font-weight: 500;
+        }
+        
+        .p-button{
+            padding: 8px 12px;
+            border-radius: 0 5px 5px 0;
+            border-width: 2px;
+        }
+    }
+
+    &__input{
+        border-radius: 5px 0 0 5px;
+        padding: 8px 12px;
+        width: 100%;
+    }
+}
