@@ -4,6 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HeaderModule } from './shared/components/header/header.module';
+import { LayoutComponent } from './core/layout/layout.component';
+import { LayoutModule } from './core/layout/layout.module';
+import { AdvertModule } from './features/advert/advert.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,8 @@ import { HeaderModule } from './shared/components/header/header.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HeaderModule
+    LayoutModule,
+    AdvertModule
   ],
   providers: [],
   bootstrap: [AppComponent]

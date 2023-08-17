@@ -28,14 +28,19 @@
         
         .p-button{
             padding: 8px 12px;
-            border-radius: 0 5px 5px 0;
+            border-radius: 5px;
             border-width: 2px;
         }
     }
 
     &__input{
-        border-radius: 5px 0 0 5px;
-        padding: 8px 12px;
-        width: 100%;
+        border: none;
+        border-bottom: 2px solid #7254f3;
+        transition: .5s linear opacity;
+        opacity: .5;
+
+        &:focus{
+            opacity: .8;
+        }
     }
 }
