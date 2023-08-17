@@ -5,9 +5,30 @@
         <span class="logo_black">board+</span>
       </a>
     </div>
-    <div class="flex">
-      <p-button styleClass="p-button-outlined" label="Вход" сlass="mr-3 px-1"></p-button>
-      <p-button label="Регистрация" class="ml-1"></p-button>
+    <ng-container *ngIf="!isAuthorized; else authorized">
+      <div class="flex">
+        <p-button styleClass="p-button-outlined" label="Вход" сlass="mr-3 px-1"></p-button>
+        <p-button label="Регистрация" class="ml-1"></p-button>
       </div>
+    </ng-container>
   </div>
 <app-search-bar></app-search-bar>
+
+
+<ng-template #authorized>
+  <div class="flex align-items-center">
+        
+    <p-menu #menu [popup]="true" class="menu"></p-menu>
+    <button pButton (click)="menu.toggle($event)" class="p-button-text user-button" style="color:#000">
+        <i class="pi pi-user mr-2"></i>
+        <span>
+            Геннадий
+            <i class="pi pi-chevron-down "></i>
+        </span>
+    </button>
+    <button routerLink="/create-advert" pButton class="px-3 py-2">
+        <span>Новое объявление</span>
+        <i class="pi pi-plus ml-2"></i>
+    </button>
+  </div>
+</ng-template>
