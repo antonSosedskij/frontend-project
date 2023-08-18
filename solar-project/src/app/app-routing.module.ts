@@ -16,6 +16,15 @@ const routes: Routes = [
           import('./features/advert/advert-routing.module').then(
             (m) => m.AdvertRoutingModule
           ),
+  },
+  {
+    path: 'account',
+    title: 'Аккаунт',
+    component: LayoutComponent,
+    loadChildren: () =>
+          import('./features/account/account-routing.module').then(
+            (m) => m.AccountRoutingModule
+          ),
   }
 ];
 

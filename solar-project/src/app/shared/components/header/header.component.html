@@ -1,4 +1,4 @@
-<div class="container flex px-5 py-3 shadow-2 justify-content-between align-items-center">
+<div class="flex px-8 py-3 shadow-2 justify-content-between align-items-center">
     <div class="container__logo logo">
       <a href="">
         <span class="logo_purple">Ad</span>
@@ -12,14 +12,13 @@
       </div>
     </ng-container>
   </div>
-<app-search-bar></app-search-bar>
 
 
 <ng-template #authorized>
   <div class="flex align-items-center">
         
-    <p-menu #menu [popup]="true" class="menu"></p-menu>
-    <button pButton (click)="menu.toggle($event)" class="p-button-text user-button" style="color:#000">
+    <p-menu #menu [popup]="true" [model]="items" class="menu"></p-menu>
+    <button pButton (click)="menu.toggle($event)" class="p-button-text user-button mr-2" style="color:#000">
         <i class="pi pi-user mr-2"></i>
         <span>
             Геннадий
