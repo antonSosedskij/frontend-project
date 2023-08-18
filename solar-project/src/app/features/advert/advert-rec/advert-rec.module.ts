@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdvertRecRoutingModule } from './advert-rec-routing.module';
 import { AdvertRecComponent } from './advert-rec.component';
 import { RouterModule } from '@angular/router';
+import { CardModule } from 'src/app/shared/components/card/card.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     AdvertRecRoutingModule,
-    RouterModule
+    RouterModule,
+    CardModule
   ]
 })
 export class AdvertRecModule { }
