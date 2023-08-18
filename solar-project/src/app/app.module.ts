@@ -7,6 +7,7 @@ import { HeaderModule } from './shared/components/header/header.module';
 import { LayoutComponent } from './core/layout/layout.component';
 import { LayoutModule } from './core/layout/layout.module';
 import { AdvertModule } from './features/advert/advert.module';
+import { AccountModule } from './features/account/account.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AdvertModule } from './features/advert/advert.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     LayoutModule,
-    AdvertModule
+    AdvertModule,
+    AccountModule
   ],
   providers: [],
   bootstrap: [AppComponent]
