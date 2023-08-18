@@ -16,6 +16,15 @@ const routes: Routes = [
       import('./advert-rec/advert-rec-routing.module').then(
         (m) => m.AdvertRecRoutingModule
       )
+  },
+  {
+    path: 'mine',
+    title: 'Мои объявления',
+    component: AdvertComponent,
+    loadChildren : () =>
+      import('./my-adverts/my-adverts-routing.module').then(
+        (m) => m.MyAdvertsRoutingModule
+      )
   }
 ];
 
