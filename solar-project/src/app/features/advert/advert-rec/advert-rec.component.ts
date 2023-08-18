@@ -32,6 +32,24 @@ export class AdvertRecComponent {
       address: 'г.Нигде, ул.Никакая',
       created_at: 'Севодня, 14,12'
     },
+    {
+      title: 'Opel Astra, 2013',
+      price: 200000,
+      address: 'г.Нигде, ул.Никакая',
+      created_at: 'Вчера, 14:43'
+    },
+    {
+      title: 'Opel Astra, 2013',
+      price: 200000,
+      address: 'г.Нигде, ул.Никакая',
+      created_at: 'Вчера, 14:43'
+    },
+    {
+      title: 'Opel Astra, 2013',
+      price: 200000,
+      address: 'г.Нигде, ул.Никакая',
+      created_at: 'Вчера, 14:43'
+    },
 
   ]
 
