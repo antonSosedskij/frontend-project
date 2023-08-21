@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HeaderModule } from './shared/components/header/header.module';
-import { LayoutComponent } from './core/layout/layout.component';
+import { HttpClientModule } from "@angular/common/http"
 import { LayoutModule } from './core/layout/layout.module';
 import { AdvertModule } from './features/advert/advert.module';
 import { AccountModule } from './features/account/account.module';
@@ -16,6 +15,7 @@ import { AccountModule } from './features/account/account.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     LayoutModule,
     AdvertModule,
