@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    title: 'Найстройки аккаунта',
+    title: 'Настройки аккаунта',
     component: AccountComponent,
     loadChildren: () => 
       import('./profile/profile-routing.module').then(

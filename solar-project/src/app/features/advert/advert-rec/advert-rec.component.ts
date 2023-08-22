@@ -1,56 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { debounceTime, delay, filter, map, take, tap } from 'rxjs';
+import { AdvertResponse } from 'src/app/data-access/dtos/advert-response';
+import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
 
 @Component({
   selector: 'app-advert-rec',
   templateUrl: './advert-rec.component.html',
   styleUrls: ['./advert-rec.component.scss']
 })
-export class AdvertRecComponent {
+export class AdvertRecComponent implements OnInit {
 
-  adverts = [
-    {
-      title: 'Продам гараж',
-      price: 200000,
-      address: 'г.Нигде, ул.Никакая',
-      created_at: 'Севодня, 14,12'
-    },
-    {
-      title: 'Daewoo MatiZ',
-      price: 250000,
-      address: 'г.Нигде, ул.Никакая',
-      created_at: 'Севодня, 14:21'
-    },
-    {
-      title: 'Opel Astra, 2013',
-      price: 200000,
-      address: 'г.Нигде, ул.Никакая',
-      created_at: 'Вчера, 14:43'
-    },
-    {
-      title: 'Продам гараж',
-      price: 200000,
-      address: 'г.Нигде, ул.Никакая',
-      created_at: 'Севодня, 14,12'
-    },
-    {
-      title: 'Opel Astra, 2013',
-      price: 200000,
-      address: 'г.Нигде, ул.Никакая',
-      created_at: 'Вчера, 14:43'
-    },
-    {
-      title: 'Opel Astra, 2013',
-      price: 200000,
-      address: 'г.Нигде, ул.Никакая',
-      created_at: 'Вчера, 14:43'
-    },
-    {
-      title: 'Opel Astra, 2013',
-      price: 200000,
-      address: 'г.Нигде, ул.Никакая',
-      created_at: 'Вчера, 14:43'
-    },
+  adverts! : AdvertResponse[];
 
-  ]
+  constructor(
+    private advertService: AdvertService
+  ){}
 
+  ngOnInit(): void {
+    this.advertService.getAllAdverts()
+      .pipe(
+        delay(4000),
+        tap( (response : AdvertResponse[]) => {
+          this.adverts = response;
+          console.log(this.adverts);
+        }),
+      ).subscribe();
+  }
 }
