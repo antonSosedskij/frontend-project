@@ -14,6 +14,7 @@
     class="xl:col-3 md:col-4 sm:col-6"
         *ngFor="let advert of adverts"
         [advert]="advert"
+        [routerLink]="['../view', advert.id]"
     ></app-card>
     </div>
 </div>
