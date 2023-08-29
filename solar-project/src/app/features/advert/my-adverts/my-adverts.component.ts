@@ -21,7 +21,7 @@ export class MyAdvertsComponent implements OnInit {
     this.advertService.getAllAdverts()
       .pipe(
         map(response => 
-          response.filter((r : AdvertResponse) => r.id === this.myId)
+          response.filter((r : AdvertResponse) => r.user_id === this.myId)
         ),
         delay(2000),
         tap(
