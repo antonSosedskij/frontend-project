@@ -8,6 +8,7 @@ import { AdvertComponent } from './advert.component';
 import { AdvertRecModule } from './advert-rec/advert-rec.module';
 import { CardModule } from 'src/app/shared/components/card/card.module';
 import { MyAdvertsModule } from './my-adverts/my-adverts.module';
+import { OverviewModule } from './overview/overview.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MyAdvertsModule } from './my-adverts/my-adverts.module';
     RouterModule,
     AdvertRecModule,
     MyAdvertsModule,
+    OverviewModule
   ]
 })
 export class AdvertModule { }

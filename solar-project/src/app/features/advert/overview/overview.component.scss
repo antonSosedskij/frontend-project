@@ -1,0 +1,35 @@
+.header{
+
+    &__info{
+        & p{
+            font-size: 32px;
+            margin: 10px 30px 10px 0;
+        }
+    }
+}
+
+.info{
+
+    &__description,
+    &__address{
+        p {
+            &:first-child{
+                font-size: 20px;
+                font-weight: 700;
+                margin: 0;
+            }
+
+            &:last-child{
+                font-size: 16px;
+                line-height: 25px;
+            }
+        }
+    }
+}
+
+.phone-button{
+    
+    span{
+        font-size: 16px;
+    }
+}
