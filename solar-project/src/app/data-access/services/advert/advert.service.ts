@@ -10,8 +10,8 @@ export class AdvertService {
   constructor() { }
 
 
-  getAllAdverts() : Observable<AdvertResponse> {
-    return from(this.getAdverts())
+  getAllAdverts() : Observable<AdvertResponse[]> {
+    return of(this.getAdverts())
   }
 
   private getAdverts(){
