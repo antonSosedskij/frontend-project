@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class GalleryComponent {
 
+  images = [
+    {
+      imageUrl: 'https://placehold.co/600x400',
+      thumbnailImgUrl: 'https://placehold.co/600x400'
+    },
+    {
+      imageUrl: 'https://placehold.co/900x600',
+      thumbnailImgUrl: 'https://placehold.co/600x400'
+    }
+  ]
+
 }

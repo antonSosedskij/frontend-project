@@ -1,1 +1,7 @@
-<p>gallery works!</p>
+<div class="container">
+    <p-galleria [value]="images" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [containerStyle]="{ 'max-width': '640px' }">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.imageUrl" class="w-full" />
+        </ng-template>
+    </p-galleria>
+</div>
