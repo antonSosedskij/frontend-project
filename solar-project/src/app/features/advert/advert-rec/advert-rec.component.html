@@ -2,9 +2,10 @@
     <h1 class="text-3xl pl-4">Рекоменации для вас</h1>
     <div class="grid pt-3 px-3 justify-content-between">
         <app-card 
-            class="xl:col-3"
+            class="xl:col-3 cursor-pointer"
             *ngFor="let advert of adverts"
             [advert]="advert"
+            [routerLink]="['../view', advert.id]"
         ></app-card>
     </div>
 </div>

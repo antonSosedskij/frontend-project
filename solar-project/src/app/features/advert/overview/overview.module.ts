@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { OverviewRoutingModule } from './overview-routing.module';
-import { OverviewComponent } from './overview/overview.component';
+import { OverviewComponent } from './overview.component';
+import { ButtonModule } from 'primeng/button';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { GalleryModule } from 'src/app/shared/components/gallery/gallery.module';
 
 
 @NgModule({
@@ -11,7 +13,11 @@ import { OverviewComponent } from './overview/overview.component';
   ],
   imports: [
     CommonModule,
-    OverviewRoutingModule
+    OverviewRoutingModule,
+    ButtonModule,
+    GalleryModule,
+    BreadcrumbModule,
+    GalleryModule
   ]
 })
 export class OverviewModule { }

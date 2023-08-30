@@ -25,6 +25,15 @@ const routes: Routes = [
           import('./features/account/account-routing.module').then(
             (m) => m.AccountRoutingModule
           ),
+  },
+  {
+    path: '**',
+    title: 'Не найдено',
+    component: LayoutComponent,
+    loadChildren: () =>
+          import('./features/not-found-page/not-found-page-routing.module').then(
+            (m) => m.NotFoundPageRoutingModule
+          ),
   }
 ];
 
