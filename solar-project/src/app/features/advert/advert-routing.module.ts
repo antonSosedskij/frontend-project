@@ -34,6 +34,15 @@ const routes: Routes = [
       import('./overview/overview-routing.module').then(
         (m) => m.OverviewRoutingModule
       )
+  },
+  {
+    path: 'create',
+    title: 'Создать объявление',
+    component: AdvertComponent,
+    loadChildren: () => 
+      import ('./create/create-routing.module').then(
+        (m) => m.CreateRoutingModule
+      )
   }
 ];
 
