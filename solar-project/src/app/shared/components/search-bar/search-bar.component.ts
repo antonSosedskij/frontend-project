@@ -1,24 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { filter, map, tap } from 'rxjs';
+import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/AdvertsGetResponseDto';
+import { AutoCompleteEvent } from 'src/app/data-access/dtos/api/AutoCompleteEvent';
+import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
+import { CategoryService } from 'src/app/data-access/services/category/category.service';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.scss']
+  styleUrls: ['./search-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchBarComponent implements OnInit {
 
-  items! : MenuItem[];
+  items : MenuItem[] = [];
 
+  defaultCategory = '00000000-0000-0000-0000-000000000000'
 
-  ngOnInit(){
-    this.items = [
-      {
-        label: 'Автомобили'
-      },
-      {
-        label: 'Электроника'
-      }
-    ]
+  receivedAdverts: AdvertsGetResponseDto[] = [];
+
+  constructor(
+    private _advertService: AdvertService,
+    private categoryService: CategoryService,
+    private _cdr: ChangeDetectorRef,
+    private _router: Router){
+    
   }
+  ngOnInit(){
+    this.categoryService.getCategoryById(this.defaultCategory)
+      .pipe(
+        tap( response => {
+          console.log(response);
+          response.childs.map(
+            child => {
+              let item : MenuItem = {label: child.name}
+              this.items.push(item)
+              this._cdr.detectChanges();
+            }
+          );
+        })
+      )
+      .subscribe()
+      console.log(this.items);
+  }
+
+  search(event: Event){
+    this._router.navigate(['adverts/search'], {
+      queryParams: { search : `${(event.target as HTMLInputElement).value}` },
+
+    });
+  }
+  
 }
