@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => 
       import('./advert-rec/advert-rec-routing.module').then(
         (m) => m.AdvertRecRoutingModule
-      )
+      ),
   },
   {
     path: 'mine',
@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren : () =>
       import('./my-adverts/my-adverts-routing.module').then(
         (m) => m.MyAdvertsRoutingModule
-      )
+      ),
   },
   {
     path: 'view',
@@ -43,7 +43,16 @@ const routes: Routes = [
       import ('./create/create-routing.module').then(
         (m) => m.CreateRoutingModule
       )
-  }
+  },
+  {
+    path: 'search',
+    title: 'Поиск объявлений',
+    component: AdvertComponent,
+    loadChildren : () =>
+      import('./adverts-search/adverts-search-routing.module').then(
+        (m) => m.AdvertsSearchRoutingModule
+      ),
+  },
 ];
 
 @NgModule({
