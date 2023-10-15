@@ -13,17 +13,12 @@ export class AdvertService {
 
   API_URL : string = environment.apiUrl;
 
-  public advertsState$ = new BehaviorSubject<AdvertsGetResponseDto[] | null>(null)
-
   constructor(private _http: HttpClient) { }
 
 
 
   searchAdverts(request: AdvertsGetRequestDto) : Observable<AdvertsGetResponseDto[]> {
-    return this._http.post<AdvertsGetResponseDto[]>(`${this.API_URL}Advert/search`, request)
-      .pipe(
-        tap(response => this.advertsState$.next(response))
-      );
+    return this._http.post<AdvertsGetResponseDto[]>(`${this.API_URL}Advert/search`, request);
   }
 
   getAdvertById(id: string) : Observable<AdvertGetByIdResponseDto>{
