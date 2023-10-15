@@ -1,12 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/AdvertsGetResponseDto';
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-advert-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
 
-  @Input() advert!: any;
+  @Input() advert!: AdvertsGetResponseDto;
+
+  constructor() {
+
+  }
+
+  ngOnInit(){
+    console.log('haha');
+    
+  }
 
 }

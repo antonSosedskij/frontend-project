@@ -1,9 +1,9 @@
 <div class="card">
-    <img src="http://placehold.it/400x300" alt="" class="w-full px-2 py-1">
+    <img [src]="advert.image | image" alt="" class="w-full px-2 py-1">
     <div class="card__content content px-2 pb-3">
-        <h1 class="py-1">{{advert.title}}</h1>
-        <h2 class="pb-1">{{advert.price}}₽</h2>
-        <p class="pb-1">{{advert.address}}</p>
-        <small class="">{{advert.created_at}}</small>
+        <h1 class="py-1">{{advert.name}}</h1>
+        <h2 class="pb-1">{{advert.cost}}₽</h2>
+        <p class="pb-1">{{advert.location}}</p>
+        <small class="">{{advert.createdAt | datetime}}</small>
     </div>
 </div>
