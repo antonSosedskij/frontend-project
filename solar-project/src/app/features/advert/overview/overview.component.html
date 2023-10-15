@@ -1,26 +1,30 @@
 <div class="container">
-    <div class="container__header header">
+    <div class="container__header header mb-3">
         <!-- <div class="header__breadcrumbs">
             <p-breadcrumb></p-breadcrumb>
         </div> -->
         <div class="header__info flex align-items-center">
-            <p>Чето там</p>
-            <p>20000₽</p>
+            <p>{{advert.name}}</p>
+            <p>{{advert.cost}}₽</p>
         </div>
     </div>
     <div class="container__content content grid">
         <div class="content__gallery xl:col-7 lg:col-7 md:col-9">
-            <app-gallery></app-gallery>
+            <p-galleria [value]="images" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [containerStyle]="{ 'max-width': '640px' }">
+                <ng-template pTemplate="item" let-item>
+                    <img [src]="item" class="w-full" />
+                </ng-template>
+            </p-galleria>
         </div>
         <div class="content__info xl:col-5 lg:col-4 md:col-3">
             <div class="content__info info">
                 <div class="info__description w-full mb-3">
                     <p class="mb-2">Описание</p>
-                    <p>Тут должно быть какое то описание</p>
+                    <p>{{advert.description}}</p>
                 </div>
                 <div class="info__address w-full">
                     <p class="mb-2">Адрес</p>
-                    <p>Здесь должен быть какой то адрес</p>
+                    <p>{{advert.location}}</p>
                 </div>
                 <button pButton class="phone-button mt-2 px-4 py-3">
                     <i class="pi pi-phone mr-3"></i>
