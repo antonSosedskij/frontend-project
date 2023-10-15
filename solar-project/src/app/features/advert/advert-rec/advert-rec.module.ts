@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { CardModule } from 'src/app/shared/components/card/card.module';
 
 
+
 @NgModule({
   declarations: [
     AdvertRecComponent,
@@ -15,7 +16,7 @@ import { CardModule } from 'src/app/shared/components/card/card.module';
     CommonModule,
     AdvertRecRoutingModule,
     RouterModule,
-    CardModule
+    CardModule,
   ]
 })
 export class AdvertRecModule { }
