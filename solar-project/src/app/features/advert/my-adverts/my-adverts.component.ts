@@ -1,34 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { delay, filter, map, tap } from 'rxjs';
 import { AdvertResponse } from 'src/app/data-access/dtos/advert-response';
+import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/AdvertsGetResponseDto';
 import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
+import { UserService } from 'src/app/data-access/services/user/user.service';
 
 @Component({
   selector: 'app-my-adverts',
   templateUrl: './my-adverts.component.html',
-  styleUrls: ['./my-adverts.component.scss']
+  styleUrls: ['./my-adverts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyAdvertsComponent implements OnInit {
-  adverts! : AdvertResponse[];
-
-  myId = 'bcec3685-6bb3-4537-9e1a-6f36ac9aac82'
+  myAdverts! : AdvertsGetResponseDto[];
+  
 
   constructor(
-    private advertService : AdvertService
+    private advertService : AdvertService,
+    private _userService: UserService,
+    private _cdr: ChangeDetectorRef
   ){}
 
   ngOnInit(){
-    this.advertService.getAllAdverts()
+    this._userService.userState$
       .pipe(
-        map(response => 
-          response.filter((r : AdvertResponse) => r.user_id === this.myId)
-        ),
-        delay(2000),
-        tap(
-          (response : AdvertResponse[]) => {
-            this.adverts = response;
-          } 
-        )
+        tap( response => {
+          this.myAdverts = response?.adverts || [];
+          this._cdr.detectChanges();
+        })
       ).subscribe();
   }
 }

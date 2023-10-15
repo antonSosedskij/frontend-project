@@ -1,1 +1,20 @@
-<p>sign-up works!</p>
+<div class="container">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="container__form form flex flex-column">
+        <div class="form__data flex flex-column">
+            <input class="mb-3" pInputText type="text" placeholder="Введите имя" formControlName="name">
+            <!-- <small *ngIf="(signUpForm.controls['login'].touched && signUpForm.controls['login'].invalid)">
+                Укажите логин (не менее 8 символов)
+            </small> -->
+            <input class="mb-3" pInputText type="text" placeholder="Введите логин" formControlName="login">
+            <!-- <small *ngIf="(signUpForm.controls['email'].touched && signUpForm.controls['email'].invalid)">
+                Введите email
+            </small> -->
+            <input class="mb-3" pInputText type="password" placeholder="Придумайте пароль" formControlName="password">
+            <!-- <small *ngIf="(signUpForm.controls['password'].touched && signUpForm.controls['password'].invalid)">
+                Укажите пароль(не менее 8 символов)
+            </small> -->
+        </div>
+        <p-button type="submit" label="Зарегистрироваться"></p-button>
+    </form>
+</div>
+

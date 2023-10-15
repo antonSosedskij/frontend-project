@@ -5,6 +5,7 @@ import { OverviewComponent } from './overview.component';
 import { ButtonModule } from 'primeng/button';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { GalleryModule } from 'src/app/shared/components/gallery/gallery.module';
+import { GalleriaModule } from 'primeng/galleria';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { GalleryModule } from 'src/app/shared/components/gallery/gallery.module'
     ButtonModule,
     GalleryModule,
     BreadcrumbModule,
-    GalleryModule
+    GalleriaModule
   ]
 })
 export class OverviewModule { }
