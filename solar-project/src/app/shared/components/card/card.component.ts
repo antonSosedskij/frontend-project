@@ -14,9 +14,4 @@ export class CardComponent {
 
   }
 
-  ngOnInit(){
-    console.log('haha');
-    
-  }
-
 }
