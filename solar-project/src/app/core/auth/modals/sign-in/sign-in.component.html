@@ -1,1 +1,26 @@
-<p>sign-in works!</p>
+<div class="container">
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="container__form form flex flex-column">
+        <div class="form__data flex flex-column">
+            <input class="mb-3" pInputText type="text" placeholder="Логин" formControlName="login">
+            <!-- <small *ngIf="signInForm.controls['login'].touched && signInForm.controls['login'].invalid">
+                Введите логин
+            </small> -->
+            <input class="mb-3" pInputText type="password" placeholder="Пароль" formControlName="password">
+            <!-- <small *ngIf="signInForm.controls['password'].touched && signInForm.controls['password'].hasError('required')">
+                Введите пароль (не менее 8 символов)
+            </small> -->
+        </div>
+        <div class="flex justify-content-between align-items-center mb-3">
+            <div class="flex">
+                <input type="checkbox" class="mr-2">
+                <p>Запомнить меня</p>
+            </div>
+            <a href=""><span>Забыли пароль?</span></a>
+        </div>
+        <p-button type="submit" label="Войти"></p-button>
+        <p-toast></p-toast>
+    </form>
+</div>
+
+
+
