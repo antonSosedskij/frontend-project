@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { filter, map, tap } from 'rxjs';
-import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/AdvertsGetResponseDto';
-import { AutoCompleteEvent } from 'src/app/data-access/dtos/api/AutoCompleteEvent';
+import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/advert/AdvertsGetResponseDto';
 import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
 import { CategoryService } from 'src/app/data-access/services/category/category.service';
 
@@ -31,10 +30,10 @@ export class SearchBarComponent implements OnInit {
   ngOnInit(){
     this.categoryService.getCategoryById(this.defaultCategory)
       .pipe(
-        tap( response => {
+        tap( (response) => {
           console.log(response);
           response.childs.map(
-            child => {
+            (child) => {
               let item : MenuItem = {label: child.name}
               this.items.push(item)
               this._cdr.detectChanges();
