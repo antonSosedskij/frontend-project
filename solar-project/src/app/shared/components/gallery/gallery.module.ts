@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { GalleryComponent } from './gallery.component';
 import { GalleriaModule } from 'primeng/galleria'
 
@@ -11,7 +11,8 @@ import { GalleriaModule } from 'primeng/galleria'
   ],
   imports: [
     CommonModule,
-    GalleriaModule
+    GalleriaModule,
+    NgIf
   ],
   exports: [
     GalleryComponent
