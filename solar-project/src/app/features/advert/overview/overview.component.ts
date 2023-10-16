@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, tap } from 'rxjs';
+import { concat, concatMap, filter, map, tap } from 'rxjs';
 import { AdvertResponse } from 'src/app/data-access/dtos/advert-response';
-import { AdvertGetByIdResponseDto } from 'src/app/data-access/dtos/api/AdvertGetByIdResponseDto';
-import { ImageDto } from 'src/app/data-access/dtos/api/ImageDto';
-import { ImageGetDto } from 'src/app/data-access/dtos/api/ImageGetDto';
+import { AdvertGetByIdResponseDto } from 'src/app/data-access/dtos/api/advert/AdvertGetByIdResponseDto';
+import { ImageDto } from 'src/app/data-access/dtos/api/image/ImageDto';
+import { ImageGetDto } from 'src/app/data-access/dtos/api/image/ImageGetDto';
 import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
 import { ImageService } from 'src/app/data-access/services/image/image.service';
 
@@ -17,7 +17,7 @@ export class OverviewComponent implements OnInit {
 
   advertId!: string;
   advert!: AdvertGetByIdResponseDto;
-  images: string[] = [];
+  images: any[] = [];
 
   constructor(
     private _advertService: AdvertService,
@@ -29,24 +29,28 @@ export class OverviewComponent implements OnInit {
     this.advertId = this._route.snapshot.params['id'];
     console.log(this.advertId);
     
-    this._advertService.getAdvertById(this.advertId)
+    this._advertService
+      .getAdvertById(this.advertId)
       .pipe(
-        tap((response: AdvertGetByIdResponseDto) => {
-          this.advert = response,
-          response.imagesIds.forEach((element : string) => {
-            this._imageService.getImageById(element)
-              .pipe(
-                tap((response) => {
-                  this.images.push(URL.createObjectURL(response));
-                  
-                } )
-              )
-              .subscribe();
+        concatMap((response: AdvertGetByIdResponseDto) => {
+          this.advert = response;
+          // Создаем массив Observables для получения изображений
+          const imageObservables = response.imagesIds.map((element: string) => {
+            return this._imageService.getImageById(element).pipe(
+              tap((image) => {
+                console.log('Response', image);
+                this.images.push({
+                  imageSrc: URL.createObjectURL(image),
+                  thumbnailImageSrc: URL.createObjectURL(image),
+                });
+              })
+            );
           });
-          console.log(this.images);
-          
-        }
-      ))
-      .subscribe();
+          return concat(...imageObservables);
+        })
+      )
+      .subscribe(() => {
+        console.log(this.images); 
+      });
   }
 }
