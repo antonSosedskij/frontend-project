@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { GalleryModule } from 'src/app/shared/components/gallery/gallery.module';
 import { GalleriaModule } from 'primeng/galleria';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { GalleriaModule } from 'primeng/galleria';
     OverviewRoutingModule,
     ButtonModule,
     GalleryModule,
+    FormsModule,
     BreadcrumbModule,
     GalleriaModule
   ]

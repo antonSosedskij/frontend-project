@@ -6,7 +6,7 @@ import { tap } from 'rxjs';
 import { SignInComponent } from 'src/app/core/auth/modals/sign-in/sign-in.component';
 import { SignUpComponent } from 'src/app/core/auth/modals/sign-up/sign-up.component';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
-import { UserDto } from 'src/app/data-access/dtos/api/UserDto';
+import { UserDto } from 'src/app/data-access/dtos/api/user/UserDto';
 import { UserService } from 'src/app/data-access/services/user/user.service';
 
 @Component({
