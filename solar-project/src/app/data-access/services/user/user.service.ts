@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environment/environment';
-import { UserDto } from '../../dtos/api/UserDto';
+import { UserDto } from '../../dtos/api/user/UserDto';
 
 @Injectable({
   providedIn: 'root'
