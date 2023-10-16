@@ -1,4 +1,4 @@
-import { AdvertsGetResponseDto } from "./AdvertsGetResponseDto";
+import { AdvertsGetResponseDto } from "../advert/AdvertsGetResponseDto";
 
 export interface UserDto{
     id: string,

@@ -1,5 +1,5 @@
-import { CategoryGetResponseDto } from "./CategoryGetResponseDto"
-import { ShortUserDto } from "./ShortUserDto"
+import { CategoryGetResponseDto } from "../category/CategoryGetResponseDto"
+import { ShortUserDto } from "../user/ShortUserDto"
 
 export interface AdvertGetByIdResponseDto{
   id: string,
