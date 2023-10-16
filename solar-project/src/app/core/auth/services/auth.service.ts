@@ -7,7 +7,7 @@ import { SignUpResponseDto } from '../dtos/sign-up-response';
 import { SignInRequestDto } from '../dtos/sign-in-request';
 import { SignInResponseDto } from '../dtos/sign-in-response';
 import { UserService } from 'src/app/data-access/services/user/user.service';
-import { UserDto } from 'src/app/data-access/dtos/api/UserDto';
+import { UserDto } from 'src/app/data-access/dtos/api/user/UserDto';
 
 @Injectable({
   providedIn: 'root'

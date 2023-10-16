@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
-import { CategoryGetResponseDto } from '../../dtos/api/CategoryGetResponseDto';
-import { GetCategoryByIdDto } from '../../dtos/api/GetCategoryByIdDto';
+import { CategoryGetResponseDto } from '../../dtos/api/category/CategoryGetResponseDto';
+import { GetCategoryByIdDto } from '../../dtos/api/category/GetCategoryByIdDto';
 
 @Injectable({
   providedIn: 'root'

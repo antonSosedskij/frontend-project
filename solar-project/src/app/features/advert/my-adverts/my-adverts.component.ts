@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { delay, filter, map, tap } from 'rxjs';
 import { AdvertResponse } from 'src/app/data-access/dtos/advert-response';
-import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/AdvertsGetResponseDto';
+import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/advert/AdvertsGetResponseDto';
 import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
 import { UserService } from 'src/app/data-access/services/user/user.service';
 
