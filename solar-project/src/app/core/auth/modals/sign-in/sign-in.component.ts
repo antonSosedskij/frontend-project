@@ -8,7 +8,7 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Message, MessageService } from 'primeng/api';
 import { SignInResponseDto } from '../../dtos/sign-in-response';
 import { UserService } from 'src/app/data-access/services/user/user.service';
-import { UserDto } from 'src/app/data-access/dtos/api/UserDto';
+import { UserDto } from 'src/app/data-access/dtos/api/user/UserDto';
 
 @Component({
   selector: 'app-sign-in',
