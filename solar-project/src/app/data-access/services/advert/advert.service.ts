@@ -5,6 +5,7 @@ import { AdvertsGetRequestDto } from '../../dtos/api/advert/AdvertsGetRequestDto
 import { AdvertsGetResponseDto } from '../../dtos/api/advert/AdvertsGetResponseDto';
 import { HttpClient } from '@angular/common/http';
 import { AdvertGetByIdResponseDto } from '../../dtos/api/advert/AdvertGetByIdResponseDto';
+import { AdvertCreateRequestDto } from '../../dtos/api/advert/AdvertCreateRequestDto';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class AdvertService {
 
   getAdvertById(id: string) : Observable<AdvertGetByIdResponseDto>{
     return this._http.get<AdvertGetByIdResponseDto>(`${this.API_URL}Advert/${id}`);
+  }
+
+  createAdvert(request: FormData) : Observable<AdvertsGetResponseDto>{
+    return this._http.post<AdvertsGetResponseDto>(`${this.API_URL}Advert`, request)
   }
 
   // getAdvertById(id: string): Observable<AdvertResponse>{
