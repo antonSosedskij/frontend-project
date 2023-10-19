@@ -1,0 +1,38 @@
+p-autoComplete::ng-deep{
+    span{
+        width: 33%;
+
+        input{
+            width: 100%;
+        }
+    }
+}
+
+.file-upload {
+    position: relative;
+    width: 150px;
+    overflow: hidden;
+  }
+  
+  .file-label {
+    display: block;
+    background-color: #7254F3;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .file-input {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+  
+  /* Стили при наведении мыши */
+  .file-label:hover {
+    background-color: #2980b9;
+  }

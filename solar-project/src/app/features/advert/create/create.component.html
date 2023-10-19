@@ -1,16 +1,6 @@
-<div class="container">
+<div class="container pl-3">
     <h1 class="my-3 text-xl">Новое объявление</h1>
-    <form  class="container__form form">
-        <div class="form__input flex flex-column mb-3">
-            <label for="">Выберите категорию</label>
-            <select pInputText class="w-4" pInputText formControlName="categoryId">
-                <option [value]="">Нажмите, чтобы выбрать</option>
-                <!-- <option [value]="category.id" *ngFor="let category of categories">{{category.name}}</option> -->
-            </select>
-            <!-- <small *ngIf="advertForm.controls['categoryId'].touched && (advertForm.controls['categoryId'].value == '')">
-                Выберите категорию
-            </small> -->
-        </div>
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()"  class="container__form form">
         <div class="form__input flex flex-column mb-3">
             <label for="">Название объявления</label>
             <input class="w-4" formControlName="name" type="text" pInputText placeholder="Что хотите продать?">
@@ -23,24 +13,50 @@
             <textarea class="w-4" formControlName="description" pInputText placeholder="Расскажите подробнее.."></textarea>
             
         </div>
-        <div class="form__input flex flex-column mb-3">
+        <div class="form__input flex flex-column mb-3 w-full">
             <label for="">Адрес</label>
-            <input class="w-4" formControlName="address" type="text" pInputText placeholder="Укажите адрес">
+            <p-autoComplete 
+                formControlName="location" 
+                [suggestions]="suggested" 
+                (completeMethod)="getAddresses($event)" 
+                (onSelect)="selectAddress($event)"
+                field="value"
+            >
+            </p-autoComplete>
             <!-- <small *ngIf="advertForm.controls['address'].touched && advertForm.controls['address'].invalid">
                 Укажите адрес
             </small> -->
         </div>
-        <div class="form__input">
-            <!-- <app-file-upload></app-file-upload> -->
+        <div class="form__input flex flex-column mb-3">
+            <label for="">Выберите категорию</label>
+            <select pInputText class="w-4" pInputText formControlName="categoryId">
+                <option>Нажмите, чтобы выбрать</option>
+                <option [value]="category.id" *ngFor="let category of categories">{{category.name}}</option>
+            </select>
+            <!-- <small *ngIf="advertForm.controls['categoryId'].touched && (advertForm.controls['categoryId'].value == '')">
+                Выберите категорию
+            </small> -->
+        </div>
+        <div class="form__input flex flex-column mb-3">
+            <label for="" class="mb-1">Ваш телефон</label>
+            <input class="w-4" formControlName="phone" type="tel" pInputText placeholder="Введите ваш телефон">
+            <!-- <small *ngIf="advertForm.controls['name'].touched && advertForm.controls['name'].invalid">
+                Введите название
+            </small> -->
+        </div>
+        <div class="form__input file-upload flex flex-column mb-3">
+            <label class="file-label">Выберите файл</label>
+            <input class="file-input" (change)="onFileChange($event)" name="images" type="file"  multiple="multiple">
         </div>
         <div class="form__input flex flex-column mb-3">
             <label for="">Цена</label>
-            <p-inputNumber class="w-6" formControlName="price" placeholder="Укажите цену"></p-inputNumber>
+            <p-inputNumber class="w-6" formControlName="cost" placeholder="Укажите цену"></p-inputNumber>
         </div>
+        <p-toast></p-toast>
         <button pButton type="submit">Разместить объявление</button>
     </form>
 
-    <div class="container__rules mt-2">
-        Нажимая на кнопку "Разместить объявление" <br> Вы соглашаетесь с <a href="#" class="text-indigo-400">правилами площадки</a> 
+    <div class="container__rules mt-2 text-xs">
+        Нажимая на кнопку "Разместить объявление" <br> Вы соглашаетесь с <a href="#" class="text-indigo-400 text-xs">правилами площадки</a> 
     </div>
 </div>
