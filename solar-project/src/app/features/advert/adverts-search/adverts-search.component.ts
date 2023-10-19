@@ -42,7 +42,6 @@ export class AdvertsSearchComponent {
                   } else this.isEmpty = true
 
                   this.search = params['search']
-                  this._cdr.detectChanges()
                 }
                 ),
                 map((response: AdvertsGetResponseDto[]) => {
@@ -52,6 +51,7 @@ export class AdvertsSearchComponent {
                           .pipe(
                             tap(image => {
                               element.image = URL.createObjectURL(image);
+                              this._cdr.detectChanges()
                             })
                           ).subscribe()
                       }
@@ -62,7 +62,7 @@ export class AdvertsSearchComponent {
         )
       )
       .subscribe(
-        (params) => console.log('Params', params)
+        (params) => console.log('Params', params),
       );
 
   }
