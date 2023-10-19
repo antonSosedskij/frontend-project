@@ -1,0 +1,5 @@
+<div *ngIf="geolocation" class="container">
+    <ya-map [center]="geolocation" [zoom]="12">
+      <ya-placemark [geometry]="geolocation"></ya-placemark>
+    </ya-map>
+</div>
