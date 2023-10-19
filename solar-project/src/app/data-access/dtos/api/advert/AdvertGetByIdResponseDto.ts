@@ -14,5 +14,7 @@ export interface AdvertGetByIdResponseDto{
   location: string,
   created: string,
   category: CategoryGetResponseDto,
-  images: string[]
+  images: string[],
+  geo_lat: number,
+  geo_lon: number
 }
