@@ -9,6 +9,8 @@ import { OverviewModule } from './overview/overview.module';
 import { CreateModule } from './create/create.module';
 import { GalleriaModule } from 'primeng/galleria';
 import { AdvertsSearchModule } from './adverts-search/adverts-search.module';
+import { ToastModule } from 'primeng/toast';
+import { MapModule } from 'src/app/shared/components/map/map.module';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { AdvertsSearchModule } from './adverts-search/adverts-search.module';
     OverviewModule,
     AdvertsSearchModule,
     CreateModule,
-    GalleriaModule
+    GalleriaModule,
+    ToastModule,
+    MapModule
   ]
 })
 export class AdvertModule { }
