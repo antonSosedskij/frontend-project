@@ -6,6 +6,7 @@ import { AdvertGetByIdResponseDto } from 'src/app/data-access/dtos/api/advert/Ad
 import { ImageDto } from 'src/app/data-access/dtos/api/image/ImageDto';
 import { ImageGetDto } from 'src/app/data-access/dtos/api/image/ImageGetDto';
 import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
+import { DadataService } from 'src/app/data-access/services/dadata/dadata.service';
 import { ImageService } from 'src/app/data-access/services/image/image.service';
 
 @Component({
@@ -19,13 +20,20 @@ export class OverviewComponent implements OnInit {
   advert!: AdvertGetByIdResponseDto;
   images: any[] = [];
 
+  geo_lat: number = 55.751952;
+  geo_lon: number = 37.600739;
+
+
+
   constructor(
     private _advertService: AdvertService,
     private _imageService: ImageService,
+    private _dadata: DadataService,
     private _route: ActivatedRoute
   ){}
 
-  ngOnInit():void{
+
+  ngOnInit() :void {
     this.advertId = this._route.snapshot.params['id'];
     console.log(this.advertId);
     
@@ -34,7 +42,16 @@ export class OverviewComponent implements OnInit {
       .pipe(
         concatMap((response: AdvertGetByIdResponseDto) => {
           this.advert = response;
-          // Создаем массив Observables для получения изображений
+          this._dadata.getSuggestedAddresses({query: response.location})
+            .pipe(
+              tap(
+                response => {
+                  this.geo_lat = Number(response.suggestions[0].data.geo_lat);
+                  this.geo_lon = Number(response.suggestions[0].data.geo_lon);
+                }
+              )
+            ) 
+            .subscribe(); //вынести в метод
           const imageObservables = response.imagesIds.map((element: string) => {
             return this._imageService.getImageById(element).pipe(
               tap((image) => {
@@ -50,7 +67,8 @@ export class OverviewComponent implements OnInit {
         })
       )
       .subscribe(() => {
-        console.log(this.images); 
+        console.log(this.advert); 
       });
   }
+
 }

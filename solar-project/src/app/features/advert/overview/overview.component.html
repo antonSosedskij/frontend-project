@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pl-4">
     <div class="container__header header mb-3">
         <!-- <div class="header__breadcrumbs">
             <p-breadcrumb></p-breadcrumb>
@@ -32,6 +32,11 @@
                     <i class="pi pi-phone mr-3"></i>
                     <span class="font-medium">Показать телефон</span>
                 </button>
+                <div class="map w-full h-15rem mt-3">
+                    <ya-map [zoom]="14" [center]="[geo_lat, geo_lon]">
+                        <ya-placemark [geometry]="[geo_lat, geo_lon]"></ya-placemark>
+                    </ya-map>
+                </div>
             </div>
         </div>
     </div>
