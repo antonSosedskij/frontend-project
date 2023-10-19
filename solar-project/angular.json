@@ -34,9 +34,11 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/soho-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeflex/primeflex.css"
+              "node_modules/primeflex/primeflex.css",
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/angular-yandex-maps/dist/yandex-maps.js"
+            ]
           },
           "configurations": {
             "production": {
