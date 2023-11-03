@@ -20,8 +20,10 @@ export class OverviewComponent implements OnInit {
   advert!: AdvertGetByIdResponseDto;
   images: any[] = [];
 
-  geo_lat: number = 55.751952;
-  geo_lon: number = 37.600739;
+  isPhoneHiding = true;
+
+  geo_lat = 0;
+  geo_lon = 0;
 
 
 
@@ -46,6 +48,7 @@ export class OverviewComponent implements OnInit {
             .pipe(
               tap(
                 response => {
+                  console.log(response);
                   this.geo_lat = Number(response.suggestions[0].data.geo_lat);
                   this.geo_lon = Number(response.suggestions[0].data.geo_lon);
                 }
@@ -69,6 +72,17 @@ export class OverviewComponent implements OnInit {
       .subscribe(() => {
         console.log(this.advert); 
       });
+  }
+
+  showPhone(){
+    this.isPhoneHiding = !this.isPhoneHiding;
+  }
+
+  checkPhoneState(){
+    if(this.isPhoneHiding){
+      return 'Показать телефон'
+    }
+    return this.advert.phone
   }
 
 }

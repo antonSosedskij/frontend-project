@@ -1,4 +1,4 @@
-<div class="container pl-4">
+<div class="container px-8">
     <div class="container__header header mb-3">
         <!-- <div class="header__breadcrumbs">
             <p-breadcrumb></p-breadcrumb>
@@ -30,7 +30,7 @@
                 </div>
                 <button pButton class="phone-button mt-2 px-4 py-3">
                     <i class="pi pi-phone mr-3"></i>
-                    <span class="font-medium">Показать телефон</span>
+                    <span class="font-medium" (click)="showPhone()">{{checkPhoneState()}}</span>
                 </button>
                 <div class="map w-full h-15rem mt-3">
                     <ya-map [zoom]="14" [center]="[geo_lat, geo_lon]">
