@@ -3,6 +3,7 @@ import { delay, filter, map, tap } from 'rxjs';
 import { AdvertResponse } from 'src/app/data-access/dtos/advert-response';
 import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/advert/AdvertsGetResponseDto';
 import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
+import { ImageService } from 'src/app/data-access/services/image/image.service';
 import { UserService } from 'src/app/data-access/services/user/user.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class MyAdvertsComponent implements OnInit {
   constructor(
     private advertService : AdvertService,
     private _userService: UserService,
-    private _cdr: ChangeDetectorRef
+    private _cdr: ChangeDetectorRef,
+    private _imageService: ImageService
   ){}
 
   ngOnInit(){
@@ -26,7 +28,20 @@ export class MyAdvertsComponent implements OnInit {
       .pipe(
         tap( response => {
           this.myAdverts = response?.adverts || [];
-          this._cdr.detectChanges();
+          // 
+        }),
+        map(() => {
+          this.myAdverts.forEach(element => {
+              if (element.imagesIds.length){
+                this._imageService.getImageById(element.imagesIds[0])
+                  .pipe(
+                    tap(response => {
+                      element.image = URL.createObjectURL(response);
+                      this._cdr.detectChanges();
+                    })
+                  ).subscribe()
+              }
+          });
         })
       ).subscribe();
   }
