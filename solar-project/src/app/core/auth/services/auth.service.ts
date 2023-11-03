@@ -10,40 +10,35 @@ import { UserService } from 'src/app/data-access/services/user/user.service';
 import { UserDto } from 'src/app/data-access/dtos/api/user/UserDto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private API_URL = environment.apiUrl;
 
-  constructor(
-    private _http: HttpClient,
-    private _userService: UserService) { }
+  constructor(private _http: HttpClient, private _userService: UserService) {}
 
-  public isAuthenticated() : boolean{
+  public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
-    return !!token
+    return !!token;
   }
 
   public signUp(request: SignUpRequestDto): Observable<SignUpResponseDto> {
-		return this._http.post<SignUpResponseDto>(`${this.API_URL}Auth/Register`, request);
-	}
+    const signInRequest = {
+      login: request.login,
+      password: request.password,
+    };
 
-  public signIn(request: SignInRequestDto): Observable<UserDto> {
-		return this._http
-			.post<string>(`${this.API_URL}Auth/Login`,request)
-        .pipe(
-          tap(
-            (response) => {
-              localStorage.setItem('token', response);
-            }
-          ),
-          switchMap(
-            (response) => this._userService.getCurrentUser()
-          ),
-        )
-        
+    return this._http
+      .post<SignUpResponseDto>(`${this.API_URL}Auth/Register`, request)
+      .pipe(switchMap(() => this.signIn(signInRequest)));
   }
 
-
+  public signIn(request: SignInRequestDto): Observable<UserDto> {
+    return this._http.post<string>(`${this.API_URL}Auth/Login`, request).pipe(
+      tap((response) => {
+        localStorage.setItem('token', response);
+      }),
+      switchMap((response) => this._userService.getCurrentUser())
+    );
+  }
 }
