@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    title: 'Профиль',
+    title: 'Личный кабинет',
     component: AccountComponent,
     loadChildren: () => 
       import('./profile/profile-routing.module').then(
@@ -22,8 +22,8 @@ const routes: Routes = [
     title: 'Настройки аккаунта',
     component: AccountComponent,
     loadChildren: () => 
-      import('./profile/profile-routing.module').then(
-        (m) => m.ProfileRoutingModule
+      import('./settings/settings-routing.module').then(
+        (m) => m.SettingsRoutingModule
         )
   },
 
