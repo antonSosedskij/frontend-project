@@ -19,6 +19,6 @@ export class DadataService {
   ) { }
 
   getSuggestedAddresses(query: AddressesGetRequestDto) : Observable<AddressesGetResponseDto>{
-    return this._http.post<AddressesGetResponseDto>(this.requestUrl, query, {headers: { 'Use-Other': 'true'}})
+    return this._http.post<AddressesGetResponseDto>(this.requestUrl, query, {headers: { 'Authorization': `Token ${environment.dadataToken}`}})
   }
 }
