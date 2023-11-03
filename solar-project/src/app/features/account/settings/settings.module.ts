@@ -5,6 +5,9 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { AutoComplete, AutoCompleteModule } from 'primeng/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     SettingsRoutingModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    AutoCompleteModule,
+    ReactiveFormsModule,
+    ToastModule
   ]
 })
 export class SettingsModule { }

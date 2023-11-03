@@ -1,47 +1,31 @@
-<div class="container pl-4">
-    <h1 class="mb-2 text-xl">Настройки</h1>
-
-<form class="form form__info">
-    <div class="top-row">
-        <div class="flex flex-column w-4 mb-2">
-            <label class="mb-1 font-medium" for="">Имя</label>
-            <input pInputText type="text" pInputText formControlName="login">
-            <!-- <small *ngIf="infoUpdateForm.controls['login'].touched && infoUpdateForm.controls['login'].invalid">
-                Введите новый логин (не менее 8 символов)
-            </small> -->
+<div class="container flex justify-content-center align-items-center flex-column pt-8">
+    <h1 class="mb-2 text-xl">Изменить настройки</h1>
+    
+    <form [formGroup]="userUpdateForm" (ngSubmit)="onSubmit()" class="form form__info">
+        <div class="flex flex-column align-items-center">
+            <div class="flex flex-column mb-2">
+                <label class="mb-1 font-medium" for="">Имя</label>
+                <input pInputText type="text" pInputText formControlName="name">
+                <!-- <small *ngIf="infoUpdateForm.controls['login'].touched && infoUpdateForm.controls['login'].invalid">
+                    Введите новый логин (не менее 8 символов)
+                </small> -->
+            </div>
+            <div class="flex flex-column mb-2">
+                <label class="mb-1 font-medium" for="">Логин</label>
+                <input type="tel" pInputText formControlName="login">
+                <!-- <small *ngIf="infoUpdateForm.controls['phone'].touched && infoUpdateForm.controls['phone'].invalid">
+                    Введите номер телефона
+                </small> -->
+            </div>
+            <div class="flex flex-column mb-2">
+                <label class="mb-1 font-medium" for="">Пароль</label>
+                <input type="password" pInputText formControlName="password">
+                <!-- <small *ngIf="infoUpdateForm.controls['phone'].touched && infoUpdateForm.controls['phone'].invalid">
+                    Введите номер телефона
+                </small> -->
+            </div>
         </div>
-        <div class="flex flex-column w-4 mb-2">
-            <label class="mb-1 font-medium" for="">Номер телефона</label>
-            <input type="tel" pInputText formControlName="phone">
-            <!-- <small *ngIf="infoUpdateForm.controls['phone'].touched && infoUpdateForm.controls['phone'].invalid">
-                Введите номер телефона
-            </small> -->
-        </div>
-    </div>
-   <div class="flex flex-column w-4 mb-2">
-        <label class="mb-1 font-medium" for="">Адрес</label>
-        <input type="text" pInputText formControlName="address">
-        <!-- <small *ngIf="infoUpdateForm.controls['address'].touched && infoUpdateForm.controls['address'].invalid">
-            Введите адрес
-        </small> -->
-   </div>
-    <button class="mb-2" pButton type="submit">Сохранить</button>
-</form>
-
-<form class="form form__reset">
-    <div class="flex flex-column w-3 mb-2">
-        <label class="mb-1 font-medium">Текущий пароль</label>
-        <input pInputText type="text" formControlName="password">
-        <!-- <small *ngIf="passwordResetForm.controls['password'].touched && passwordResetForm.controls['password'].invalid"></small> -->
-    </div>
-    <div class="flex flex-column w-3 mb-2">
-        <label class="mb-1 font-medium">Новый пароль</label>
-        <input pInputText type="text" formControlName="newPassword">
-        <!-- <small *ngIf="passwordResetForm.controls['newPassword'].touched && passwordResetForm.controls['newPassword'].invalid">
-            Введите новый пароль (не менее 8 символов)
-        </small> -->
-    </div>
-    <button pButton type="submit">Сменить пароль</button>
-</form>
-
+        <button class="mt-3" pButton type="submit">Сохранить</button>
+    </form>
+    <p-toast></p-toast>
 </div>
