@@ -9,6 +9,13 @@
     div{
         width: 320px;
     }
+
+    small {
+        font-size: 12px;
+        color: red;
+        font-weight: 500;
+        margin-top: 5px;
+      } 
 }
 
 p-autoComplete::ng-deep{

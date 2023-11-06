@@ -1,3 +1,17 @@
+.form{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 6rem;
+
+  small {
+    font-size: 14px;
+    color: red;
+    font-weight: 500;
+    margin-top: 5px;
+  } 
+}
+
+
 p-autoComplete::ng-deep{
     span{
         width: 33%;
@@ -30,9 +44,4 @@ p-autoComplete::ng-deep{
     top: 0;
     right: 0;
     cursor: pointer;
-  }
-  
-  /* Стили при наведении мыши */
-  .file-label:hover {
-    background-color: #2980b9;
   }

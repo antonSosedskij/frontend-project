@@ -21,7 +21,7 @@ import { ToastModule } from 'primeng/toast';
     ReactiveFormsModule,
     ButtonModule,
     AutoCompleteModule,
-    ToastModule
+    ToastModule,
   ]
 })
 export class CreateModule { }

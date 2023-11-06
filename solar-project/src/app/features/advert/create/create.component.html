@@ -1,62 +1,75 @@
-<div class="container pl-3">
+<div class="container lg:px-8 md:px-6 sm:px-4">
     <h1 class="my-3 text-xl">Новое объявление</h1>
-    <form [formGroup]="createForm" (ngSubmit)="onSubmit()"  class="container__form form">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="container__form form">
         <div class="form__input flex flex-column mb-3">
             <label for="">Название объявления</label>
-            <input class="w-4" formControlName="name" type="text" pInputText placeholder="Что хотите продать?">
-            <!-- <small *ngIf="advertForm.controls['name'].touched && advertForm.controls['name'].invalid">
-                Введите название
-            </small> -->
+            <input class="w-full" formControlName="name" type="text" pInputText placeholder="Что хотите продать?">
+            <small *ngIf="createForm.controls['name'].touched && createForm.controls['name'].invalid">
+                Название обязательно
+            </small>
         </div>
         <div class="form__input flex flex-column mb-3">
             <label for="">Описание</label>
-            <textarea class="w-4" formControlName="description" pInputText placeholder="Расскажите подробнее.."></textarea>
-            
+            <textarea class="w-full" formControlName="description" pInputText
+                placeholder="Расскажите подробнее.."></textarea>
         </div>
         <div class="form__input flex flex-column mb-3 w-full">
             <label for="">Адрес</label>
             <p-autoComplete 
+                styleClass="w-full" 
                 formControlName="location" 
-                [suggestions]="suggested" 
+                [suggestions]="suggested"
                 (completeMethod)="getAddresses($event)" 
-                (onSelect)="selectAddress($event)"
+                (onSelect)="selectAddress($event)" 
                 field="value"
-            >
+                >
             </p-autoComplete>
-            <!-- <small *ngIf="advertForm.controls['address'].touched && advertForm.controls['address'].invalid">
-                Укажите адрес
-            </small> -->
+            <small *ngIf="createForm.controls['location'].touched && createForm.controls['location'].invalid">
+                Укажите правильный адрес
+            </small>
         </div>
-        <div class="form__input flex flex-column mb-3">
+        <div class="form__input flex flex-column mb-3 w-full">
             <label for="">Выберите категорию</label>
-            <select pInputText class="w-4" pInputText formControlName="categoryId">
+            <select pInputText class="w-6 sm:w-full" pInputText formControlName="categoryId">
                 <option>Нажмите, чтобы выбрать</option>
                 <option [value]="category.id" *ngFor="let category of categories">{{category.name}}</option>
             </select>
-            <!-- <small *ngIf="advertForm.controls['categoryId'].touched && (advertForm.controls['categoryId'].value == '')">
-                Выберите категорию
-            </small> -->
+            <small *ngIf="createForm.controls['categoryId'].touched && (createForm.controls['categoryId'].value == '')">
+                Укажите категорию объявления
+            </small>
         </div>
-        <div class="form__input flex flex-column mb-3">
+        <div class="form__input flex flex-column mb-3 w-full">
             <label for="" class="mb-1">Ваш телефон</label>
-            <input class="w-4" formControlName="phone" type="tel" pInputText placeholder="Введите ваш телефон">
-            <!-- <small *ngIf="advertForm.controls['name'].touched && advertForm.controls['name'].invalid">
-                Введите название
-            </small> -->
+            <input class="w-full" formControlName="phone" type="tel" pInputText placeholder="Введите ваш телефон">
+            <small *ngIf="createForm.controls['phone'].touched && createForm.controls['phone'].invalid">
+                Укажите телефон
+            </small>
         </div>
         <div class="form__input file-upload flex flex-column mb-3">
-            <label class="file-label">Выберите файл</label>
-            <input class="file-input" (change)="onFileChange($event)" name="images" type="file"  multiple="multiple">
+            <p-toast></p-toast>
+            <label class="file-label text-center">Выберите файл</label>
+            <input accept="image/*" class="file-input" (change)="onFileChange($event)" name="images" type="file"
+                multiple="multiple">  
         </div>
         <div class="form__input flex flex-column mb-3">
             <label for="">Цена</label>
-            <p-inputNumber class="w-6" formControlName="cost" placeholder="Укажите цену"></p-inputNumber>
+            <p-inputNumber 
+                styleClass="w-full" 
+                inputStyleClass="w-full" 
+                formControlName="cost"
+                placeholder="Укажите цену"
+                >
+            </p-inputNumber>
+            <small *ngIf="createForm.controls['cost'].touched && createForm.controls['cost'].invalid">
+                Укажите цену
+            </small>
         </div>
         <p-toast></p-toast>
-        <button pButton type="submit">Разместить объявление</button>
+        <button pButton class="w-max" type="submit">Разместить объявление</button>
     </form>
 
-    <div class="container__rules mt-2 text-xs">
-        Нажимая на кнопку "Разместить объявление" <br> Вы соглашаетесь с <a href="#" class="text-indigo-400 text-xs">правилами площадки</a> 
+    <div class="container__rules mt-2">
+        Нажимая на кнопку "Разместить объявление" <br> Вы соглашаетесь с <a href="#" class="text-indigo-400">правилами
+            площадки</a>
     </div>
 </div>

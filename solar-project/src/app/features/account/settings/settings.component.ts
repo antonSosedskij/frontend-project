@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { tap } from 'rxjs';
@@ -17,9 +17,21 @@ export class SettingsComponent {
 
   userUpdateForm = new FormGroup(
     {
-      name: new FormControl<string>(''),
-      login: new FormControl<string>(''),
-      password: new FormControl<string>(''),
+      name: new FormControl<string>('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(64)
+      ]),
+      login: new FormControl<string>('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(64)
+      ]),
+      password: new FormControl<string>('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(50)
+      ]),
     }
   );
 

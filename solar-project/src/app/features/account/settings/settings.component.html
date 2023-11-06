@@ -6,23 +6,23 @@
             <div class="flex flex-column mb-2">
                 <label class="mb-1 font-medium" for="">Имя</label>
                 <input pInputText type="text" pInputText formControlName="name">
-                <!-- <small *ngIf="infoUpdateForm.controls['login'].touched && infoUpdateForm.controls['login'].invalid">
-                    Введите новый логин (не менее 8 символов)
-                </small> -->
+                <small *ngIf="userUpdateForm.controls['name'].touched && userUpdateForm.controls['name'].invalid">
+                    Введите ваше новое имя (не менее 4 символов)
+                </small>
             </div>
             <div class="flex flex-column mb-2">
                 <label class="mb-1 font-medium" for="">Логин</label>
                 <input type="tel" pInputText formControlName="login">
-                <!-- <small *ngIf="infoUpdateForm.controls['phone'].touched && infoUpdateForm.controls['phone'].invalid">
-                    Введите номер телефона
-                </small> -->
+                <small *ngIf="userUpdateForm.controls['login'].touched && userUpdateForm.controls['login'].invalid">
+                    Введите новый логин (не менее 4 символов)
+                </small>
             </div>
             <div class="flex flex-column mb-2">
                 <label class="mb-1 font-medium" for="">Пароль</label>
                 <input type="password" pInputText formControlName="password">
-                <!-- <small *ngIf="infoUpdateForm.controls['phone'].touched && infoUpdateForm.controls['phone'].invalid">
-                    Введите номер телефона
-                </small> -->
+                <small *ngIf="userUpdateForm.controls['password'].touched && userUpdateForm.controls['password'].invalid">
+                    Пароль должен содержать от 8 до 50 символов
+                </small>
             </div>
         </div>
         <button class="mt-3" pButton type="submit">Сохранить</button>

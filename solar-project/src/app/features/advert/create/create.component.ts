@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { debounceTime, map, tap } from 'rxjs';
@@ -27,13 +27,26 @@ export class CreateComponent {
 
   createForm = new FormGroup(
     {
-      name: new FormControl<string>(''),
+      name: new FormControl<string>('', [
+        Validators.required
+      ]),
       description: new FormControl<string>(''),
-      location: new FormControl<string>(''),
+      location: new FormControl<string>('', [
+        Validators.required,
+        Validators.minLength(5)
+      ]),
       images: new FormControl<FileList | null>(null),
-      categoryId: new FormControl<string>(''),
-      phone: new FormControl<string>(''),
-      cost: new FormControl<number>(0)
+      categoryId: new FormControl<string>('', [
+        Validators.required
+      ]),
+      phone: new FormControl<string>('', [
+        Validators.required,
+        Validators.minLength(11)
+      ]),
+      cost: new FormControl<number>(0, [
+        Validators.required,
+        Validators.min(1)
+      ])
     }
   );
 
@@ -75,7 +88,6 @@ export class CreateComponent {
         }
         ),
       ).subscribe();
-
   }
 
   selectAddress(location: any){
