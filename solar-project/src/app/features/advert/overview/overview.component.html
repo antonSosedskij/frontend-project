@@ -1,5 +1,5 @@
-<div class="container px-8">
-    <div class="container__header header mb-3">
+<div class="container lg:px-8 md:px-4 sm:px-2">
+    <div class="container__header header mb-3 pl-4">
         <!-- <div class="header__breadcrumbs">
             <p-breadcrumb></p-breadcrumb>
         </div> -->
@@ -8,21 +8,22 @@
             <p class="font-medium">{{advert.cost}}₽</p>
         </div>
     </div>
-    <div class="container__content content grid">
-        <div class="xl:col-6 lg:col-7 md:col-9">
+    <div class="container__content content grid ">
+        <div class="xl:col-6 lg:col-7 md:col-12 px-6">
             <app-gallery
                 [images]="images"
             ></app-gallery>
         </div>
         <div class="
-                xl:col-5 pl-8 
-                lg:col-4 
-                md:col-3
+                lg:col-5 pl-8
+                md:col-12
                 ">
-            <div class="content__info info">
-                <div class="info__description w-full mb-3">
+            <div class="content__info info w-full">
+                <div class="info__description">
                     <p class="mb-2">Описание</p>
-                    <p>{{advert.description}}</p>
+                    <p>
+                        {{advert.description}}
+                    </p>
                 </div>
                 <div class="info__address w-full">
                     <p class="mb-2">Адрес</p>
@@ -32,7 +33,7 @@
                     <i class="pi pi-phone mr-3"></i>
                     <span class="font-medium" (click)="showPhone()">{{checkPhoneState()}}</span>
                 </button>
-                <div class="map w-full h-15rem mt-3">
+                <div class="map w-full h-15rem mt-3 pt-3">
                     <ya-map [zoom]="14" [center]="[geo_lat, geo_lon]">
                         <ya-placemark [geometry]="[geo_lat, geo_lon]"></ya-placemark>
                     </ya-map>
