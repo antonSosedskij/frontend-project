@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdvertComponent } from './advert.component';
+import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       ),
   },
   {
+    canActivate: [AuthGuard],
     path: 'mine',
     title: 'Мои объявления',
     component: AdvertComponent,
@@ -36,6 +38,7 @@ const routes: Routes = [
       )
   },
   {
+    canActivate: [AuthGuard],
     path: 'create',
     title: 'Создать объявление',
     component: AdvertComponent,
