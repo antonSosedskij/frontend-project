@@ -1,12 +1,12 @@
-<div class="flex px-5 py-3 shadow-2 justify-content-between align-items-center">
-    <div class="logo xl:pl-8 md: ">
+<div class="flex sm:px-5 py-3 shadow-2 justify-content-between align-items-center">
+    <div class="logo xl:pl-8">
       <a href="">
         <span class="logo_purple">Ad</span>
         <span class="logo_black">board+</span>
       </a>
     </div>
     <ng-container *ngIf="!_authService.isAuthenticated(); else authorized">
-      <div class="flex mr-8">
+      <div class="flex lg:mr-8">
         <p-button styleClass="p-button-outlined" label="Вход" сlass="mr-3 px-1" (click)="showSignIn()"></p-button>
         <p-button label="Регистрация" class="ml-1" (click)="showSignUp()"></p-button>
       </div>
@@ -15,7 +15,7 @@
 
 
 <ng-template #authorized>
-  <div class="flex align-items-center xl:pr-8 md:">
+  <div class="flex align-items-center">
         
     <p-menu #menu [popup]="true" [model]="items" class="menu"></p-menu>
     <button pButton (click)="menu.toggle($event)" class="p-button-text user-button mr-2" style="color:#000">

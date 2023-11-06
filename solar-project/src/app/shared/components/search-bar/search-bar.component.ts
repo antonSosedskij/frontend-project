@@ -53,7 +53,7 @@ export class SearchBarComponent implements OnInit {
     });
   }
 
-  searchByClick(query: string){
+  searchByClick(query: string) {
     this._router.navigate(['adverts/search'], {
       queryParams: { search: query },
     });

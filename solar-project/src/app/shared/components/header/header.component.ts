@@ -22,8 +22,8 @@ export class HeaderComponent {
   
   items : MenuItem[] = [
     {
-      label: 'Личный кабинет',
-      routerLink: '/account/profile'
+      label: 'Настройки',
+      routerLink: '/account/settings'
     },
     {
       label: 'Мои объявления',
@@ -52,6 +52,8 @@ export class HeaderComponent {
               this.currentUserName = response.name;
             }
             else this._userService.getCurrentUser().subscribe();
+            console.log(response);
+            
           }
         )
       )
