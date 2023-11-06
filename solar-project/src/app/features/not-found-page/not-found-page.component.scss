@@ -1,0 +1,22 @@
+.container{
+    display: flex;justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #7254F3
+}
+h1{
+  font-size: 30vh;
+}
+h2 span{
+  font-size: 4rem;
+  font-weight: 600;
+}
+a:link, a:visited{
+  text-decoration: none;
+}
+h3 a:hover{
+  text-decoration: none;
+  background: #fff;
+  color: #3498DB;
+  cursor: pointer;
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NotFoundPageRoutingModule } from './not-found-page-routing.module';
 import { NotFoundPageComponent } from './not-found-page.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NotFoundPageComponent } from './not-found-page.component';
   ],
   imports: [
     CommonModule,
-    NotFoundPageRoutingModule
+    NotFoundPageRoutingModule,
+    RouterModule
   ]
 })
 export class NotFoundPageModule { }
