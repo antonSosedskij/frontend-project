@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,8 @@ import { AccountModule } from './features/account/account.module';
 import { SignInModule } from './core/auth/modals/sign-in/sign-in.module';
 import { SignUpModule } from './core/auth/modals/sign-up/sign-up.module';
 import { TokenInterceptor } from './shared/interceptors/token/token.interceptor';
+import { ToastModule } from 'primeng/toast';
+import '@angular/common/locales/global/ru';
 
 
 @NgModule({
@@ -25,9 +27,11 @@ import { TokenInterceptor } from './shared/interceptors/token/token.interceptor'
     SignUpModule,
     LayoutModule,
     AdvertModule,
-    AccountModule
+    AccountModule,
+    ToastModule,
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'ru-RUS' },
     {
       provide: HTTP_INTERCEPTORS,
       multi: true,
