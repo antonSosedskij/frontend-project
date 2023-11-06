@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MapModule } from 'src/app/shared/components/map/map.module';
 import { AngularYandexMapsModule } from 'angular8-yandex-maps';
 import { environment } from 'src/environment/environment';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { environment } from 'src/environment/environment';
     BreadcrumbModule,
     GalleriaModule,
     MapModule,
+    ScrollPanelModule,
     AngularYandexMapsModule.forRoot({
       apikey: environment.apiKeyYa
     }),

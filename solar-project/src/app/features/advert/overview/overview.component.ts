@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { concat, concatMap, filter, map, tap } from 'rxjs';
+import { AuthService } from 'src/app/core/auth/services/auth.service';
 import { AdvertResponse } from 'src/app/data-access/dtos/advert-response';
 import { AdvertGetByIdResponseDto } from 'src/app/data-access/dtos/api/advert/AdvertGetByIdResponseDto';
 import { ImageDto } from 'src/app/data-access/dtos/api/image/ImageDto';
@@ -31,7 +32,8 @@ export class OverviewComponent implements OnInit {
     private _advertService: AdvertService,
     private _imageService: ImageService,
     private _dadata: DadataService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _authService: AuthService
   ){}
 
 
@@ -79,10 +81,9 @@ export class OverviewComponent implements OnInit {
   }
 
   checkPhoneState(){
-    if(this.isPhoneHiding){
-      return 'Показать телефон'
-    }
-    return this.advert.phone
+    return this.isPhoneHiding 
+      ? 'Показать телефон' 
+      : (this._authService.isAuthenticated() ? this.advert.phone : 'Показать телефон')
   }
 
 }
