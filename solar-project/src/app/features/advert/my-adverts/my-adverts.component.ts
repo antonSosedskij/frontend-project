@@ -14,7 +14,7 @@ import { UserService } from 'src/app/data-access/services/user/user.service';
 })
 export class MyAdvertsComponent implements OnInit {
   myAdverts! : AdvertsGetResponseDto[];
-  
+  isLoading = true;
 
   constructor(
     private advertService : AdvertService,
@@ -28,7 +28,7 @@ export class MyAdvertsComponent implements OnInit {
       .pipe(
         tap( response => {
           this.myAdverts = response?.adverts || [];
-          // 
+          this.isLoading = false
         }),
         map(() => {
           this.myAdverts.forEach(element => {

@@ -1,5 +1,5 @@
 <div class="container px-8">
-    <div class="grid px-3 pt-2">
+    <div class="grid px-3 pt-2" [routerLink]="['/adverts/create']">
         <div class="
         flex justify-content-center 
         align-items-center flex-column xl:col-3 md:col-4 sm:col-6"
@@ -11,11 +11,40 @@
         <p class="text-primary text-xl">Создать объявление</p>
     </div>
     <app-advert-card
-    class="xl:col-3 md:col-4 sm:col-6"
+        class="xl:col-3 md:col-4 sm:col-6"
         *ngFor="let advert of myAdverts"
         [advert]="advert"
         [routerLink]="['../view', advert.id]"
     ></app-advert-card>
     </div>
 </div>
+
+<ng-template #skeleton>
+    <div class="grid px-4 py-2" *ngFor="let item of [].constructor(3)">
+        <div class="xl:col-3 md:col-3 sm:col-6">
+            <p-skeleton  height="230px" width="100%" borderRadius="10px"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="20px" width="100%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="15px" width="75%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="10px" width="50%"></p-skeleton>
+        </div>
+        <div class="xl:col-3 md:col-3 sm:col-6">
+            <p-skeleton  height="230px" width="100%" borderRadius="10px"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="20px" width="100%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="15px" width="75%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="10px" width="50%"></p-skeleton>
+        </div>
+        <div class="xl:col-3 md:col-3 sm:col-6">
+            <p-skeleton  height="230px" width="100%" borderRadius="10px"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="20px" width="100%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="15px" width="75%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="10px" width="50%"></p-skeleton>
+        </div>
+        <div class="xl:col-3 md:col-3 sm:col-6">
+            <p-skeleton  height="230px" width="100%" borderRadius="10px"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="20px" width="100%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="15px" width="75%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="10px" width="50%"></p-skeleton>
+        </div>
+    </div>
+</ng-template>
 

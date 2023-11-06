@@ -16,6 +16,7 @@ export class AdvertsSearchComponent {
   advertsBySearch : AdvertsGetResponseDto[] = [];
   search: string = ''
   isEmpty!: boolean;
+  isLoading = true;
 
   constructor(
     private _route: ActivatedRoute,
@@ -34,14 +35,14 @@ export class AdvertsSearchComponent {
             this._advertService.searchAdverts({search: params['search'], showNoActive: false})
               .pipe(
                 tap(
-                response => {
+                response => {  
+                  this.advertsBySearch = response
+                  this.isLoading = false
                   if (response.length !== 0){
-                    this.advertsBySearch = response
                     this.isEmpty = false
-                    console.log(this.isEmpty);
                   } else this.isEmpty = true
-
                   this.search = params['search']
+                  this._cdr.detectChanges()
                 }
                 ),
                 map((response: AdvertsGetResponseDto[]) => {
@@ -64,7 +65,6 @@ export class AdvertsSearchComponent {
       .subscribe(
         (params) => console.log('Params', params),
       );
-
   }
 
   // ngOnDestroy(){

@@ -6,6 +6,7 @@ import { MyAdvertsComponent } from './my-adverts.component';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'src/app/shared/components/card/card.module';
 import { ButtonModule } from 'primeng/button';
+import { SkeletonModule } from 'primeng/skeleton';
 
 
 
@@ -18,7 +19,8 @@ import { ButtonModule } from 'primeng/button';
     MyAdvertsRoutingModule,
     RouterModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    SkeletonModule
   ]
 })
 export class MyAdvertsModule { }

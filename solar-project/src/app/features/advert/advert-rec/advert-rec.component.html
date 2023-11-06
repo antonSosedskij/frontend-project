@@ -1,12 +1,41 @@
-<div class="container">
+<div class="container xl:px-8 md:px-4 sm:px-2">
     <h1 class="text-3xl pl-4">Рекоменации для вас</h1>
-    <div class="grid pt-3 px-3">
-        <app-advert-card 
-            class="xl:col-3 md:col-4 sm:col-6 cursor-pointer"
-            *ngFor="let advert of adverts"
-            [advert]="advert"
-            [routerLink]="['../view', advert.id]"
-        ></app-advert-card>
-    </div>
+        <div class="grid pt-3 px-3" *ngIf="!isLoading; else skeleton">
+            <app-advert-card 
+                class="xl:col-3 md:col-4 sm:col-6 cursor-pointer"
+                *ngFor="let advert of adverts"
+                [advert]="advert"
+                [routerLink]="['../view', advert.id]"
+            ></app-advert-card>
+        </div>
 </div>
 <p-scrollTop></p-scrollTop>
+
+<ng-template #skeleton>
+    <div class="grid px-4 py-2" *ngFor="let item of [].constructor(3)">
+        <div class="xl:col-3 md:col-3 sm:col-6">
+            <p-skeleton  height="230px" width="100%" borderRadius="10px"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="20px" width="100%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="15px" width="75%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="10px" width="50%"></p-skeleton>
+        </div>
+        <div class="xl:col-3 md:col-3 sm:col-6">
+            <p-skeleton  height="230px" width="100%" borderRadius="10px"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="20px" width="100%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="15px" width="75%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="10px" width="50%"></p-skeleton>
+        </div>
+        <div class="xl:col-3 md:col-3 sm:col-6">
+            <p-skeleton  height="230px" width="100%" borderRadius="10px"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="20px" width="100%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="15px" width="75%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="10px" width="50%"></p-skeleton>
+        </div>
+        <div class="xl:col-3 md:col-3 sm:col-6">
+            <p-skeleton  height="230px" width="100%" borderRadius="10px"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="20px" width="100%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="15px" width="75%"></p-skeleton>
+            <p-skeleton styleClass="mt-3" height="10px" width="50%"></p-skeleton>
+        </div>
+    </div>
+</ng-template>

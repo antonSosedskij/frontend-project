@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { map, tap } from 'rxjs';
+import { delay, map, tap } from 'rxjs';
 import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/advert/AdvertsGetResponseDto';
 import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
 import { ImageService } from 'src/app/data-access/services/image/image.service';
@@ -13,6 +13,7 @@ import { UserService } from 'src/app/data-access/services/user/user.service';
 export class AdvertRecComponent implements OnInit {
 
   adverts! : AdvertsGetResponseDto[];
+  isLoading = true;
 
   constructor(
     private advertService: AdvertService,
@@ -23,9 +24,12 @@ export class AdvertRecComponent implements OnInit {
   ngOnInit(): void {
     this.advertService.searchAdverts({search: '', showNoActive: false})
       .pipe(
+        delay(4000),
         tap( (response : AdvertsGetResponseDto[]) => {
-          this.adverts = response;
-          console.log(this.adverts);
+          if (response){
+            this.adverts = response;
+            this.isLoading = false;
+          }
         }),
         map((response: AdvertsGetResponseDto[]) => {
           response.forEach(element => {
@@ -40,6 +44,5 @@ export class AdvertRecComponent implements OnInit {
           });
         })
       ).subscribe();
-   
   }
 }
