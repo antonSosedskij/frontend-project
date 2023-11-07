@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, tap } from 'rxjs';
+import { delay, filter, map, tap } from 'rxjs';
+import { AdvertsGetRequestDto } from 'src/app/data-access/dtos/api/advert/AdvertsGetRequestDto';
 import { AdvertsGetResponseDto } from 'src/app/data-access/dtos/api/advert/AdvertsGetResponseDto';
 import { AdvertService } from 'src/app/data-access/services/advert/advert.service';
 import { ImageService } from 'src/app/data-access/services/image/image.service';
@@ -32,7 +33,7 @@ export class AdvertsSearchComponent {
       .pipe(
         tap(
           params => {
-            this._advertService.searchAdverts({search: params['search'], showNoActive: false})
+            this._advertService.searchAdverts({search: params['search'], showNoActive: false, category: params['category']})
               .pipe(
                 tap(
                 response => {  
@@ -67,8 +68,5 @@ export class AdvertsSearchComponent {
       );
   }
 
-  // ngOnDestroy(){
-  //   this.isEmpty = false;
-  // }
 
 }
