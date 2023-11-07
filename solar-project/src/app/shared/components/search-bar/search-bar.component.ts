@@ -38,7 +38,14 @@ export class SearchBarComponent implements OnInit {
         tap((response) => {
           console.log(response);
           response.childs.map((child) => {
-            let item: MenuItem = { label: child.name };
+            let item: MenuItem = { 
+              label: child.name, 
+              command: () => {
+                this._router.navigate(['adverts/search'], {
+                  queryParams: {category: child.id}
+                })
+              }
+            };
             this.items.push(item);
             this._cdr.detectChanges();
           });
