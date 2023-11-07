@@ -1,23 +1,22 @@
-<div class="container px-8">
-    <div class="grid px-3 pt-2" [routerLink]="['/adverts/create']">
-        <div class="
-        flex justify-content-center 
-        align-items-center flex-column xl:col-3 md:col-4 sm:col-6"
-    >
-        <p-button
-			icon="pi pi-plus"
-			styleClass="p-button-outlined p-button-rounded mb-3 p-5 w-3rem border-dashed"
-		></p-button>
-        <p class="text-primary text-xl">Создать объявление</p>
-    </div>
-    <app-advert-card
-        class="xl:col-3 md:col-4 sm:col-6"
-        *ngFor="let advert of myAdverts"
-        [advert]="advert"
-        [routerLink]="['../view', advert.id]"
-    ></app-advert-card>
+<div class="container lg:px-8 md:px-4 sm:px-2">
+    <div class="grid px-3 pt-2">
+        <div 
+            [routerLink]="['/adverts/create']"
+            class="flex justify-content-center align-items-center flex-column xl:col-3 md:col-4 sm:col-6"
+        >
+            <p-button icon="pi pi-plus"
+                styleClass="p-button-outlined p-button-rounded mb-3 p-5 w-3rem border-dashed"></p-button>
+            <p class="text-primary text-xl">Создать объявление</p>
+        </div>
+        <app-advert-card 
+            class="xl:col-3 md:col-4 sm:col-6" 
+            *ngFor="let advert of myAdverts" 
+            [advert]="advert"
+            [routerLink]="['../view', advert.id]">
+        </app-advert-card>
     </div>
 </div>
+
 
 <ng-template #skeleton>
     <div class="grid px-4 py-2" *ngFor="let item of [].constructor(3)">
